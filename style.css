@@ -68,7 +68,7 @@ header div{
   font-size: 1.52rem;
 }
 
-#passwordError1,#passwordError2,#nameError,#emailError {
+#passwordError1,#passwordError2,#nameError,#emailError,#totalError {
   color: red;
 }
 
