@@ -31,19 +31,25 @@
           <div id="form1">
             <label for="nameLabel">Enter your name</label>
             <input class="bg-light" id="nameInput" type="text" placeholder="Enter name">
+            <span id="nameError"></span>
             <label for="emailLabel">Enter your email</label>
             <input class="bg-light" id="emailInput" type="email" placeholder="Enter a valid email">
+            <span id="emailError"></span>
             <label for="">Choose a password</label>
-            <input class="bg-light" id="passwordInput" type="password" placeholder="Enter a password">
-            <label for="">Enter the password again</label>
+            <input class="bg-light" id="passwordInput1" type="password" placeholder="Enter a password">
+            <span id="passwordError1"></span>
+            <label for="">Re-enter the password</label>
             <input class="bg-light" id="passwordInput2" type="password" placeholder="Enter a password">
-            <button>Get started</button>
+            <span id="passwordError2"></span>
+            <button id="submitButton">Get started</button>
+            <span>Forgot password? <a href="#">Click here</a>.</span>
+            <span>Already have an account? <a href="#">Sign in</a> here.</span>
           </div>      
       </form>
     </div>
   </main>
 <!--JavaScript Link-->
-<script src=""></script>
+<script src="./script.js"></script>
 <!--Bootstrap Link-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
