@@ -21,6 +21,11 @@ const submitButtonJS = document.getElementById("submitButton");
 */
 
 //submit button if everything is empty.
+const nameValue = nameInputJS.value;
+const emailValue = emailInputJS.value
+const password1Value = passwordInput1JS.value
+const password2Value = passwordInput2JS.value
+
 
 submitButtonJS.addEventListener("click", function (event) {
 
@@ -30,12 +35,8 @@ submitButtonJS.addEventListener("click", function (event) {
 });
 
 function fillAll() {
-  if (
-    !nameInputJS.value ||
-    !emailInputJS.value ||
-    !passwordInput1JS.value ||
-    !passwordInput2JS
-  ) {
+  if ( nameValue === "" ||emailValue === "" ||  password1Value === ""
+     || password2Value === "" ){
     // Display error message:
     nameErrorJS.innerHTML = "Name cannot be blank.";
     emailErrorJS.innerHTML = "Email address cannot be blank.";
