@@ -13,40 +13,64 @@ const passwordError2JS = document.getElementById("passwordError2");
 const totalErrorJS = document.getElementById("totalError");
 const submitButtonJS = document.getElementById("submitButton");
 
-/* 
-<span id="nameError">Name cannot be blank.</span>
-<span id="emailError">Email address cannot be blank.</span>
-<span id="passwordError1">Password must contain at least one uppercase letter, one lowercase letter, one special character, one digit, and be at least 8 characters long.</span>
-<span id="totalError">Please fill in all required fields.</span>
-*/
-
-//submit button if everything is empty.
-const nameValue = nameInputJS.value;
-const emailValue = emailInputJS.value
-const password1Value = passwordInput1JS.value
-const password2Value = passwordInput2JS.value
-
-
-submitButtonJS.addEventListener("click", function (event) {
-
-  fillAll()
-  event.preventDefault(); /*to avoid refresh*/
-
-});
-
-function fillAll() {
-  if ( nameValue === "" ||emailValue === "" ||  password1Value === ""
-     || password2Value === "" ){
-    // Display error message:
-    nameErrorJS.innerHTML = "Name cannot be blank.";
-    emailErrorJS.innerHTML = "Email address cannot be blank.";
-    passwordError1JS.innerHTML =
-      "Password must contain at least one uppercase letter, one lowercase letter, one special character, one digit, and be at least 8 characters long. ";
-    passwordError2JS.innerHTML =
-      "Password must contain at least one uppercase letter, one lowercase letter, one special character, one digit, and be at least 8 characters long. ";
-    totalErrorJS.innerHTML = "Please fill in all required fields.";
-  
-  }
-
+// Function to clear all error messages
+function clearErrors() {
+  nameErrorJS.innerHTML = "";
+  emailErrorJS.innerHTML = "";
+  passwordError1JS.innerHTML = "";
+  passwordError2JS.innerHTML = "";
+  totalErrorJS.innerHTML = "";
 }
 
+// Submit button event listener
+submitButtonJS.addEventListener("click", function (event) {
+
+  clearErrors(); // Clear any previous errors before validation
+
+  const nameValue = nameInputJS.value.trim();
+  const emailValue = emailInputJS.value.trim();
+  const password1Value = passwordInput1JS.value.trim();
+  const password2Value = passwordInput2JS.value.trim();
+
+  let hasError = false; // Flag to track if there are any errors
+
+  if (nameValue === "") {
+    nameErrorJS.innerHTML = "Name cannot be blank.";
+    hasError = true;
+  }
+
+  if (emailValue === "") {
+    emailErrorJS.innerHTML = "Email address cannot be blank.";
+    hasError = true;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+    emailErrorJS.innerHTML = "Invalid email format.";
+    hasError = true;
+  }
+
+  if (password1Value === "") {
+    passwordError1JS.innerHTML = "Password cannot be blank.";
+    hasError = true;
+  } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\s]).{8,}$/.test(password1Value)) {
+    passwordError1JS.innerHTML = "Password must meet complexity requirements.";
+    hasError = true;
+  }
+
+  if (password2Value === "") {
+    passwordError2JS.innerHTML = "Confirm password cannot be blank.";
+    hasError = true;
+  } else if (password1Value !== password2Value) {
+    passwordError2JS.innerHTML = "Passwords do not match.";
+    hasError = true;
+  }
+
+  if (hasError) {
+    totalErrorJS.innerHTML = "Please fix the errors in the form.";
+    event.preventDefault(); // Prevent form submission if there are errors
+  }
+});
+
+// Handle input changes to clear specific error messages as user types
+nameInputJS.addEventListener("input", clearErrors);
+emailInputJS.addEventListener("input", clearErrors);
+passwordInput1JS.addEventListener("input", clearErrors);
+passwordInput2JS.addEventListener("input", clearErrors);

@@ -86,3 +86,14 @@ header div{
 
   /* Your styles for small screens go here */
 }
+
+
+
+
+
+/* 
+<span id="nameError">Name cannot be blank.</span>
+<span id="emailError">Email address cannot be blank.</span>
+<span id="passwordError1">Password must contain at least one uppercase letter, one lowercase letter, one special character, one digit, and be at least 8 characters long.</span>
+<span id="totalError">Please fill in all required fields.</span>
+*/
